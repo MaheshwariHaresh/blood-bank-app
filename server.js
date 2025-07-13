@@ -23,6 +23,10 @@ app.use("/api/v1/test", require("./routes/restRoutes"));
 app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/inventory", require("./routes/inventoryRoutes"));
 
+// handle unknown routes
+app.use("*", (req, res) => {
+  res.status(404).send("API route not found");
+});
 //port
 const PORT = process.env.PORT || 5000;
 //listen
